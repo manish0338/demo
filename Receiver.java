@@ -9,8 +9,7 @@ import java.net.DatagramSocket;
 public class Receiver extends Thread
 {
     // instance variables - replace the example below with your own
-    public static int x;
-    public static int y;
+    public static XY xy = new XY();
 
     private DatagramSocket socket;
     /**
@@ -42,11 +41,13 @@ public class Receiver extends Thread
 					socket.receive(packet);
 					
 					ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
-					XY xy = (XY) iStream.readObject();
+					XY data = (XY) iStream.readObject();
 					iStream.close();
-					System.out.println(xy.x + " -ai " + xy.y);
-					Receiver.x = xy.x;
-					Receiver.y = xy.y;
+					System.out.println(data.x + " -ai " + data.y);
+					Receiver.xy.x = data.x;
+					Receiver.xy.y = data.y;
+					Receiver.xy.health = data.health;
+					Receiver.xy.id = data. id;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

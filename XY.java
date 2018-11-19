@@ -7,5 +7,6 @@ public class XY implements Serializable
     // instance variables - replace the example below with your own
     public int x = -1;
     public int y = -1;
-
+    public int id;
+    public int[] health = {100, 100};
 }

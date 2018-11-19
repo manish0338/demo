@@ -34,6 +34,7 @@ public class ReceiveUDP extends Thread {
 			XY temp = new XY();
 			temp.x = 90;
 			temp.y = 90;
+			temp.id = -1;
 			oo.writeObject(temp);
 			oo.close();
 			byte[] serializedMessage = bStream.toByteArray();
@@ -47,7 +48,6 @@ public class ReceiveUDP extends Thread {
 					XY xy = (XY) iStream.readObject();
 					iStream.close();
 					System.out.println(xy.x + " - " + xy.y);
-					
 					System.out.println(ipList);
 					packet.setPort(5001);
 					
@@ -56,6 +56,12 @@ public class ReceiveUDP extends Thread {
 					int i=1;
 					InetAddress tempIp = packet.getAddress();
 					for(InetAddress ip :ipList) {
+						ObjectOutput newoo = new ObjectOutputStream(bStream);
+						xy.id = ipList.indexOf(ip);
+						newoo.writeObject(xy);
+						newoo.close();
+						byte[] newSerializedMessage = bStream.toByteArray();
+						packet.setData(newSerializedMessage);
 						System.out.print(ip + " = ");
 						System.out.println(packet.getAddress());
 						if(ip.equals(tempIp))

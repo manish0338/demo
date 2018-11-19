@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bear here.
+ * Write a description of class Ele here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -9,18 +9,41 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Player2 extends Actor
 {
     /**
-     * Act - do whatever the Bear wants to do. This method is called whenever
+     * Act - do whatever the Ele wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    public Player2(){        
+ 
+    }
+    
     public void act() 
     {
-        //if(1==2){
-            //move();
-        //}else{
-           int y = Receiver.y;
-           int x = Receiver.x;
+        if(Receiver.xy.id == 1){
+            move();
+        }else{
+           int y = Receiver.xy.y;
+           int x = Receiver.xy.x;
         
            setLocation(x,y);
-        //}
-    }    
+        }
+        
+    }
+    
+    public void move(){
+        int x = getX();
+        int y = getY();
+        
+        if(Greenfoot.isKeyDown("W")) y -= 2;
+        if(Greenfoot.isKeyDown("S")) y += 2;
+        if(Greenfoot.isKeyDown("A")) x -= 2;
+        if(Greenfoot.isKeyDown("D")) x += 2;
+        
+        setLocation(x,y);
+        
+        Sender.sendData(x,y);
+        
+    }
+    
+    
 }

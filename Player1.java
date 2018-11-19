@@ -12,25 +12,18 @@ public class Player1 extends Actor
      * Act - do whatever the Ele wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    boolean owner = true;
     
     public Player1(){
-        if(owner==true){
-            
-        }
-        
-        try{
-        Thread t = new Receiver();
-        t.start();}catch(Exception e){e.printStackTrace();}
+    
     }
     
     public void act() 
     {
-        if(owner==true){
+        if(Receiver.xy.id == 0){
             move();
         }else{
-           int y = Receiver.y;
-           int x = Receiver.x;
+           int y = Receiver.xy.y;
+           int x = Receiver.xy.x;
         
            setLocation(x,y);
         }
