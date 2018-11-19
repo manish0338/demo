@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ele extends Actor
+public class Player1 extends Actor
 {
     /**
      * Act - do whatever the Ele wants to do. This method is called whenever
@@ -14,13 +14,13 @@ public class Ele extends Actor
      */
     boolean owner = true;
     
-    public Ele(){
+    public Player1(){
         if(owner==true){
             
         }
         
         try{
-        Thread t = new Client();
+        Thread t = new Receiver();
         t.start();}catch(Exception e){e.printStackTrace();}
     }
     
@@ -29,8 +29,8 @@ public class Ele extends Actor
         if(owner==true){
             move();
         }else{
-           int y = Client.y;
-           int x = Client.x;
+           int y = Receiver.y;
+           int x = Receiver.x;
         
            setLocation(x,y);
         }

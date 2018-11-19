@@ -26,11 +26,11 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-        Ele ele = new Ele();
-        addObject(ele,301,145);
+        Player1 player1 = new Player1();
+        addObject(player1,301,145);
         //Bear bear = new Bear();
         //addObject(bear,186,187);
-        Bear bear = new Bear();
-        addObject(bear,241,206);
+        Player2 player2 = new Player2();
+        addObject(player2,241,206);
     }
 }

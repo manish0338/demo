@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-public class Client extends Thread
+public class Receiver extends Thread
 {
     // instance variables - replace the example below with your own
     public static int x;
@@ -16,7 +16,7 @@ public class Client extends Thread
     /**
      * Constructor for objects of class Client
      */
-    public Client() throws Exception
+    public Receiver() throws Exception
     {
         
 		socket = new DatagramSocket(5001);
@@ -45,8 +45,8 @@ public class Client extends Thread
 					XY xy = (XY) iStream.readObject();
 					iStream.close();
 					System.out.println(xy.x + " -ai " + xy.y);
-					Client.x = xy.x;
-					Client.y = xy.y;
+					Receiver.x = xy.x;
+					Receiver.y = xy.y;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

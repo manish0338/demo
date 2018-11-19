@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bear extends Actor
+public class Player2 extends Actor
 {
     /**
      * Act - do whatever the Bear wants to do. This method is called whenever
@@ -17,8 +17,8 @@ public class Bear extends Actor
         //if(1==2){
             //move();
         //}else{
-           int y = Client.y;
-           int x = Client.x;
+           int y = Receiver.y;
+           int x = Receiver.x;
         
            setLocation(x,y);
         //}
