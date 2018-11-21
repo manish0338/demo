@@ -18,44 +18,44 @@ public class Receiver extends Thread
     public Receiver() throws Exception
     {
         
-		socket = new DatagramSocket(5001);
+        socket = new DatagramSocket(5001);
     }
 
     public void run()
     {
-        
+                    System.out.println("in receive");
 
-		try {
-			ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-			ObjectOutput oo = new ObjectOutputStream(bStream);
-			XY temp = new XY();
-			temp.x = 90;
-			temp.y = 90;
-			oo.writeObject(temp);
-			oo.close();
-			byte[] serializedMessage = bStream.toByteArray();
-			while (true) {
-				try {
-					
-					DatagramPacket packet = new DatagramPacket(serializedMessage, serializedMessage.length);
-					socket.receive(packet);
-					
-					ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
-					XY data = (XY) iStream.readObject();
-					iStream.close();
-					System.out.println(data.x + " -ai " + data.y);
-					Receiver.xy.x = data.x;
-					Receiver.xy.y = data.y;
-					Receiver.xy.health = data.health;
-					Receiver.xy.id = data. id;
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        try {
+            ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+            ObjectOutput oo = new ObjectOutputStream(bStream);
+            XY temp = new XY();
+            temp.x = 90;
+            temp.y = 90;
+            oo.writeObject(temp);
+            oo.close();
+            byte[] serializedMessage = bStream.toByteArray();
+            while (true) {
+                try {
+                    
+                    DatagramPacket packet = new DatagramPacket(serializedMessage, serializedMessage.length);
+                    socket.receive(packet);
+                    
+                    ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
+                    XY data = (XY) iStream.readObject();
+                    iStream.close();
+                    System.out.println(data.x + " -ai " + data.y);
+                    Receiver.xy.x = data.x;
+                    Receiver.xy.y = data.y;
+                    Receiver.xy.health = data.health;
+                    Receiver.xy.id = data. id;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-	
+    
     }
 }

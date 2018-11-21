@@ -14,26 +14,21 @@ public class Sender
         }catch(Exception e){e.printStackTrace();}
     }
 
-    public static void sendData(int x,int y){
+    public static void sendData(Object o){
+        
 
         try{
-         if(oldXY.x !=x || oldXY.y != y || true){
-             System.out.println("inside");
+         
+             //System.out.println("inside");
          ByteArrayOutputStream bStream = new ByteArrayOutputStream();
          ObjectOutput oo = new ObjectOutputStream(bStream);
-         XY temp = new XY();
-         temp.x = x;
-         temp.y = y;
-         oo.writeObject(temp);
+         oo.writeObject(o);
          oo.close();
 
          byte[] buf = bStream.toByteArray();
          DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 5000);
          socket.send(packet);
-         
-         oldXY.x= x;
-         oldXY.y= y;
-        }
+        
         }catch(Exception e){e.printStackTrace();}
 
     }
