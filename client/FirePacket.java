@@ -4,7 +4,8 @@ public class FirePacket implements Serializable
 {
     
     private static final long serialVersionUID = -1179812571626689916L;
-	
+    
+    public static int bulletCounter = 0;
     public int direction;
     public int x;
     public int y;
