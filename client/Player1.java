@@ -29,7 +29,7 @@ public class Player1 extends Actor
     public void act()
     {
         MyWorld myworld = (MyWorld)getWorld();
-        if(myworld.current instanceof OngoingGameWorldState)
+        //if(myworld.current instanceof OngoingGameWorldState)
         {
             if(Acceptor.xy.id == 0){
             

@@ -16,4 +16,16 @@ public class XY implements Serializable
         this.x = x;
         this.y = y;
     }
+    
+    public void deductHealth(int h)
+    {
+        if(this.health[this.id] - h < 0){
+            this.health[this.id] = 0;
+        }
+        else
+        {
+        this.health[this.id] -= h;
+        }
+
+    }
 }

@@ -43,7 +43,9 @@ public class Acceptor extends Thread
                             System.out.println(data.x + " -ai " + data.y);
                             Acceptor.xy.x = data.x;
                             Acceptor.xy.y = data.y;
-                            Acceptor.xy.id = data. id;
+                            Acceptor.xy.id = data.id;
+                            int sender = (data.id==0)?1:0;
+                            Acceptor.xy.health[sender] = data.health[sender];
                         }else if(o instanceof FirePacket && Acceptor.bulletCount!=((FirePacket) o).count){
                                 FirePacket firePacket = (FirePacket) o;
                                 Acceptor.bulletCount = firePacket.count;
