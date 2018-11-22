@@ -46,7 +46,10 @@ public class Player1 extends Actor
             }else{
                int y = Acceptor.xy.y;
                int x = Acceptor.xy.x;
-            
+               if(Acceptor.xy.x != -1)
+                {
+                        myworld.doOngoingGame();
+                }
                setLocation(x,y);
             }
         }

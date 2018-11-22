@@ -40,7 +40,7 @@ public class Acceptor extends Thread
                     if (o instanceof XY){
                             XY data = (XY) o;
                             
-                            System.out.println(data.x + " -ai " + data.y);
+                            System.out.println(data.x + " -ai "+ data.health[0] +" ai- " + data.y);
                             Acceptor.xy.x = data.x;
                             Acceptor.xy.y = data.y;
                             Acceptor.xy.id = data.id;
