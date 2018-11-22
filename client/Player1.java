@@ -54,7 +54,7 @@ public class Player1 extends Actor
         int x = getX();
         int y = getY();
         
-        //Sender.sendData(new XY(x,y));
+        Sender.sendData(new XY(x,y));
         
     }
      /**

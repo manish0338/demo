@@ -38,8 +38,8 @@ public class Player2 extends Actor
             if("space".equals(Greenfoot.getKey())) fireCommand.execute();
         
         }else{
-           int y = 300;//Acceptor.xy.y;
-           int x = 300;//Acceptor.xy.x;
+           int y = Acceptor.xy.y;
+           int x = Acceptor.xy.x;
         
            setLocation(x,y);
         }
@@ -55,7 +55,7 @@ public class Player2 extends Actor
         int x = getX();
         int y = getY();
         
-        //Sender.sendData(new XY(x,y));
+        Sender.sendData(new XY(x,y));
         
     }
      /**
