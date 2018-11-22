@@ -62,6 +62,8 @@ public class ReceiveUDP extends Thread {
 						byte[] newSerializedMessage = null;
 						if (o instanceof XY)
 							newSerializedMessage = getXY((XY) o, ip);
+						else if(o instanceof FirePacket)
+							newSerializedMessage = getFirePacket((FirePacket) o);
 						
 						packet.setData(newSerializedMessage);
 						System.out.print(ip + " = ");
@@ -92,6 +94,16 @@ public class ReceiveUDP extends Thread {
 		xy.id = ipList.indexOf(ip);
 		System.out.println(xy.x + " - " + xy.y);
 		newoo.writeObject(xy);
+		newoo.close();
+		byte[] newSerializedMessage = bStream1.toByteArray();
+		return newSerializedMessage;
+	}
+	
+	private byte[] getFirePacket(FirePacket firePacket) throws IOException {
+		ByteArrayOutputStream bStream1 = new ByteArrayOutputStream();
+		ObjectOutput newoo = new ObjectOutputStream(bStream1);
+		System.out.println("fire");
+		newoo.writeObject(firePacket);
 		newoo.close();
 		byte[] newSerializedMessage = bStream1.toByteArray();
 		return newSerializedMessage;
