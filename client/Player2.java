@@ -17,7 +17,7 @@ public class Player2 extends Actor
     public Player2(){
         
         GreenfootImage image = getImage();
-        image.scale(image.getWidth() - 70, image.getHeight() - 20);
+        image.scale(image.getWidth() - 100, image.getHeight() - 30);
         setImage(image);
         
         this.wCommand = new WCommand(this);
@@ -55,7 +55,7 @@ public class Player2 extends Actor
         int x = getX();
         int y = getY();
         
-        Sender.sendData(new XY(x,y));
+        //Sender.sendData(new XY(x,y));
         
     }
      /**
