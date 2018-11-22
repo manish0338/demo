@@ -2,10 +2,8 @@
 comment0.target=XY
 comment1.params=
 comment1.target=XY()
-comment2.params=x\ y
-comment2.target=XY(int,\ int)
-comment3.params=x\ y\ health
-comment3.target=XY(int,\ int,\ int[])
-comment4.params=h
-comment4.target=void\ deductHealth(int)
-numComments=5
+comment2.params=x\ y\ health
+comment2.target=XY(int,\ int,\ int[])
+comment3.params=h
+comment3.target=void\ deductHealth(int)
+numComments=4
