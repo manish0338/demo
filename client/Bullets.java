@@ -32,7 +32,7 @@ public class Bullets extends Actor
             getWorld().addObject(exp, getX(), getY());
             exp.act();
             MyWorld myworld = (MyWorld)getWorld();
-            Counter counter = myworld.getCounter();
+            Counter2 counter = myworld.getCounter2();
             counter.reduceHealth();
             getWorld().removeObject(this);
         }
