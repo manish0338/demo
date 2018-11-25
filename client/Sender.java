@@ -10,7 +10,7 @@ public class Sender
     {
         try{
            socket = new DatagramSocket();
-           address = InetAddress.getByName("10.251.215.212");
+           address = InetAddress.getByName("10.250.191.50");
         }catch(Exception e){e.printStackTrace();}
     }
 

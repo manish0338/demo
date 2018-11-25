@@ -19,9 +19,9 @@ public class Counter2 extends Actor
     
     public void reduceHealth()
     {
-        if (Acceptor.xy.health[Acceptor.xy.id] >= 10)
+        if (Acceptor.xy.health[1] >= 10)
         Acceptor.xy.deductHealth(10);
-        if (Acceptor.xy.health[Acceptor.xy.id] == 0)
+        if (Acceptor.xy.health[1] == 0)
         {
             
             MyWorld myworld = (MyWorld)getWorld();
