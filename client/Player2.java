@@ -31,7 +31,7 @@ public class Player2 extends Actor
         MyWorld myworld = (MyWorld)getWorld();
         //if(myworld.current instanceof OngoingGameWorldState)
         {
-            if(Acceptor.xy.id == 1){
+            if((Acceptor.xy.id == 1) && !(myworld.current instanceof GameOverGameWorldState)){
             
                 if(Greenfoot.isKeyDown("W")&&canMoveUp()) wCommand.execute();
                 if(Greenfoot.isKeyDown("S")&&canMoveDown()) sCommand.execute();
