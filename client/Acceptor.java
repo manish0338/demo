@@ -27,8 +27,12 @@ public class Acceptor extends Thread
 
         try {
             byte[] serializedMessage = new byte[1024];
-            while (true) {
+            int i = 30;
+            while (i>0) {
                 try {
+                    
+                    if(MyWorld.mw.current instanceof GameOverGameWorldState)
+                        System.out.println(i--);
                     
                     DatagramPacket packet = new DatagramPacket(serializedMessage, serializedMessage.length);
                     socket.receive(packet);
