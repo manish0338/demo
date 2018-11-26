@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
+    GreenfootSound sound = new GreenfootSound("Marimba Boy.wav");
     public static MyWorld mw;
     Counter counter = new Counter();
     Counter2 counter2 = new Counter2();
@@ -35,6 +36,7 @@ public class MyWorld extends World
     }
     
     public void act(){
+        BackMusic();
         prepare();
     }
     
@@ -116,5 +118,8 @@ public class MyWorld extends World
         addObject(player1,100,300);
         Player2 player2 = new Player2();
         addObject(player2,700,300);
+    }
+    public void BackMusic(){
+        sound.playLoop();
     }
 }

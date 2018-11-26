@@ -8,6 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Explosion extends Actor
 {
+    GreenfootSound soundexp = new GreenfootSound("Explo Classic.wav");
+    public Explosion()
+    {   
+        
+    }
     /**
      * Act - do whatever the explosion1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,7 +20,8 @@ public class Explosion extends Actor
     private int life=10;
     public void act() 
     {
-       
+        ExplosionSound();
+       //Greenfoot.playSound("Explo Classic.wav");
        remove(); // Add your action code here.
     }    
     
@@ -29,5 +35,8 @@ public class Explosion extends Actor
         bigexp.act();
         getWorld().removeObject(this);
     }
+    }
+    public void ExplosionSound(){
+        soundexp.play();
     }
 }
