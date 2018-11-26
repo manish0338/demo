@@ -20,7 +20,7 @@ public class Counter2 extends Actor
     public void reduceHealth()
     {
         if (Acceptor.xy.health[1] >= 10)
-        Acceptor.xy.deductHealth(10);
+        Acceptor.xy.deductHealth2(10);
         if (Acceptor.xy.health[1] == 0)
         {
             
