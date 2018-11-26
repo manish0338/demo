@@ -31,13 +31,14 @@ public class Player2 extends Actor
         MyWorld myworld = (MyWorld)getWorld();
         //if(myworld.current instanceof OngoingGameWorldState)
         {
-            if((Acceptor.xy.id == 1) && !(myworld.current instanceof GameOverGameWorldState)){
+            if(Acceptor.xy.id == 1){
             
                 if(Greenfoot.isKeyDown("W")&&canMoveUp()) wCommand.execute();
                 if(Greenfoot.isKeyDown("S")&&canMoveDown()) sCommand.execute();
                 if(Greenfoot.isKeyDown("A")&&canMoveLeft()) aCommand.execute();
                 if(Greenfoot.isKeyDown("D")&&canMoveRight()) dCommand.execute();
-                if("space".equals(Greenfoot.getKey())) fireCommand.execute();
+                if (!(myworld.current instanceof GameOverGameWorldState))
+                    if("space".equals(Greenfoot.getKey())) fireCommand.execute();
                 
                 Sender.sendData(new XY(getX(),getY(),Acceptor.xy.health));
                 
