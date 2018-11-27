@@ -13,11 +13,13 @@ import java.util.List;
 public class ReceiveUDP extends Thread {
 
 	private DatagramSocket socket;
+	private DatagramSocket socket1;
 
 	List<SocketAddress> ipList = new ArrayList<SocketAddress>();
 
 	public ReceiveUDP() throws Exception {
-		socket = new DatagramSocket(5001);
+		socket = new DatagramSocket(5000);
+		socket1 = new DatagramSocket();
 	}
 
 	public void run() {
@@ -28,19 +30,22 @@ public class ReceiveUDP extends Thread {
 
 				DatagramPacket packet = new DatagramPacket(serializedMessage, serializedMessage.length);
 				socket.receive(packet);
-				System.out.print(" = ");
+
 				ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
 				Object o = iStream.readObject();
 				iStream.close();
+				
+				
+				if (o instanceof DummyPacket && !ipList.contains(packet.getSocketAddress())) {
+					ipList.add(packet.getSocketAddress());
+				}
 
+				SocketAddress ip = packet.getSocketAddress();
+				//System.out.println("IP:"+packet.getAddress() + "  PORT:"+packet.getPort());
+
+				
+				
 				try {
-
-					
-					if (!ipList.contains(packet.getSocketAddress()))
-						ipList.add(packet.getSocketAddress());
-
-					SocketAddress ip = null;
-					
 					if (ipList.indexOf(ip) % 2 == 0)
 						ip = ipList.get(ipList.indexOf(ip) + 1);
 					else
@@ -52,14 +57,13 @@ public class ReceiveUDP extends Thread {
 					else if (o instanceof FirePacket)
 						newSerializedMessage = getFirePacket((FirePacket) o);
 
-					packet.setSocketAddress(ip);
 					packet.setData(newSerializedMessage);
 					System.out.print(ip + " = ");
 					System.out.println(packet.getAddress());
 
 					packet.setSocketAddress(ip);
 
-					socket.send(packet);
+					socket1.send(packet);
 				} catch (IndexOutOfBoundsException e) {
 				}
 
