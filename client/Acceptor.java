@@ -5,11 +5,13 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class Acceptor extends Thread
 {
     // instance variables - replace the example below with your own
     public static XY xy = new XY();
+    public static Object myxy = new XY();
     private static int bulletCount = 0;
     private DatagramSocket socket;
     /**
@@ -18,7 +20,7 @@ public class Acceptor extends Thread
     public Acceptor() throws Exception
     {
         
-        socket = new DatagramSocket(5001);
+        socket = new DatagramSocket(5000);
     }
 
     public void run()
@@ -30,11 +32,20 @@ public class Acceptor extends Thread
             int i = 30;
             while (i>0) {
                 try {
-                    
+                    ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+            ObjectOutput oo = new ObjectOutputStream(bStream);
+            oo.writeObject(Acceptor.myxy);
+            oo.close();
+
+            byte[] buf = bStream.toByteArray();
                     if(MyWorld.mw.current instanceof GameOverGameWorldState)
                         System.out.println(i--);
-                    
+                    System.out.print(" = ");
+                    DatagramPacket packet0 = new DatagramPacket(buf, buf.length, InetAddress.getByName("52.53.161.113"), 5001);    
+                    socket.send(packet0);                        
+
                     DatagramPacket packet = new DatagramPacket(serializedMessage, serializedMessage.length);
+                    socket.setSoTimeout(5000);
                     socket.receive(packet);
                     
                     ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
