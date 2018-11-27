@@ -1,3 +1,4 @@
+import java.util.*;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -8,6 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bullets extends Actor
 {
+    
+    private List<Counter2> observers = new ArrayList<Counter2>();
+    
+   
+    
     /**
      * Act - do whatever the Bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -28,11 +34,13 @@ public class Bullets extends Actor
          
        if(b != null)
         {
+            System.out.println("Instide b != Null");
             Explosion exp=new Explosion();
             getWorld().addObject(exp, getX(), getY());
             exp.act();
             MyWorld myworld = (MyWorld)getWorld();
             Counter2 counter = myworld.getCounter2();
+            //notifyAllObservers();
             counter.reduceHealth();
             getWorld().removeObject(this);
         }
@@ -45,6 +53,16 @@ public class Bullets extends Actor
             getWorld().removeObject(this);  
         }
     }
+    
+   
+   public void notifyAllObservers(){
+       System.out.println("Notifying Counter Observer");
+      for (Counter2 observer : observers) {
+          System.out.println("Notifying Counter");
+         observer.reduceHealth();
+      }
+   }    
+    
     
     
 }

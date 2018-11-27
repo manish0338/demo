@@ -48,8 +48,8 @@ public class Player2 extends Actor
                 }                    
             
             }else{
-               int y = Acceptor.xy.y;
-               int x = Acceptor.xy.x;
+               int y = 300;//Acceptor.xy.y;
+               int x = 700;//Acceptor.xy.x;
             
                setLocation(x,y);
             }

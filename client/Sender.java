@@ -27,7 +27,7 @@ public class Sender
 
          byte[] buf = bStream.toByteArray();
          DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 5000);
-         socket.send(packet);
+         //socket.send(packet);
         
         }catch(Exception e){e.printStackTrace();}
 

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Counter extends Actor
+public class Counter extends Actor implements ICounter
 {
     /**
      * Act - do whatever the Counter wants to do. This method is called whenever
@@ -16,6 +16,7 @@ public class Counter extends Actor
     {
         setImage(new GreenfootImage("Player 1 Health : " + Acceptor.xy.health[0], 24, Color.GREEN, Color.BLACK));
     } 
+ 
     
     public void reduceHealth()
     {

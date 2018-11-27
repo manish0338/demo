@@ -8,4 +8,6 @@ comment2.params=distance
 comment2.target=void\ move(double)
 comment3.params=
 comment3.target=void\ hitDetection()
-numComments=4
+comment4.params=
+comment4.target=void\ notifyAllObservers()
+numComments=5

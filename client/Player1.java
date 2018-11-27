@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Ele here.
@@ -64,10 +64,9 @@ public class Player1 extends Actor
      */
     public void fire()
     {
-       Bullets bullet= new Bullets();
-       getWorld().addObject(bullet,getX(),getY());
-       bullet.move(10);
-       
+            Bullets bullet= new Bullets();
+            getWorld().addObject(bullet,getX(),getY());
+            bullet.move(10);
     }
     
         public boolean canMoveLeft()
