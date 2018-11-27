@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Player2
-comment0.text=\n\ Write\ a\ description\ of\ class\ Ele\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Ele\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Player2()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ fire()
-comment3.text=\n\ Fire\ Bullets\n
+comment3.text=\r\n\ Fire\ Bullets\r\n
 comment4.params=
 comment4.target=boolean\ canMoveLeft()
 comment5.params=
