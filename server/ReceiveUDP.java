@@ -6,20 +6,18 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReceiveUDP extends Thread {
 
 	private DatagramSocket socket;
-	private DatagramSocket socket1;
 
-	List<InetAddress> ipList = new ArrayList<InetAddress>();
+	List<SocketAddress> ipList = new ArrayList<SocketAddress>();
 
 	public ReceiveUDP() throws Exception {
-		socket = new DatagramSocket(5000);
-		socket1 = new DatagramSocket();
+		socket = new DatagramSocket(5001);
 	}
 
 	public void run() {
@@ -30,20 +28,19 @@ public class ReceiveUDP extends Thread {
 
 				DatagramPacket packet = new DatagramPacket(serializedMessage, serializedMessage.length);
 				socket.receive(packet);
-
+				System.out.print(" = ");
 				ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
 				Object o = iStream.readObject();
 				iStream.close();
 
-				//System.out.println(ipList);
-				packet.setPort(5001);
-
-				if (!ipList.contains(packet.getAddress()))
-					ipList.add(packet.getAddress());
-
-				InetAddress ip = packet.getAddress();
-
 				try {
+
+					
+					if (!ipList.contains(packet.getSocketAddress()))
+						ipList.add(packet.getSocketAddress());
+
+					SocketAddress ip = null;
+					
 					if (ipList.indexOf(ip) % 2 == 0)
 						ip = ipList.get(ipList.indexOf(ip) + 1);
 					else
@@ -55,13 +52,14 @@ public class ReceiveUDP extends Thread {
 					else if (o instanceof FirePacket)
 						newSerializedMessage = getFirePacket((FirePacket) o);
 
+					packet.setSocketAddress(ip);
 					packet.setData(newSerializedMessage);
 					System.out.print(ip + " = ");
 					System.out.println(packet.getAddress());
 
-					packet.setAddress(ip);
+					packet.setSocketAddress(ip);
 
-					socket1.send(packet);
+					socket.send(packet);
 				} catch (IndexOutOfBoundsException e) {
 				}
 
@@ -72,7 +70,7 @@ public class ReceiveUDP extends Thread {
 
 	}
 
-	private byte[] getXY(XY xy, InetAddress ip) throws IOException {
+	private byte[] getXY(XY xy, SocketAddress ip) throws IOException {
 		ByteArrayOutputStream bStream1 = new ByteArrayOutputStream();
 		ObjectOutput newoo = new ObjectOutputStream(bStream1);
 		xy.id = ipList.indexOf(ip);

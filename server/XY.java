@@ -12,6 +12,13 @@ public class XY implements Serializable
     
     public XY(){}
     
+    public XY(XY xy){
+        this.x = xy.x;
+        this.y = xy.y;
+        this.id = xy.id;
+        this.health = xy.health;
+    }
+    
     public XY(int x,int y){
         this.x = x;
         this.y = y;
