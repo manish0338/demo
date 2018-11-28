@@ -8,6 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Counter2 extends Actor
 {
+    
+    public Counter2(Player2 subject){
+        subject.attach(this);
+    
+    }
     /**
      * Act - do whatever the Counter2 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -25,7 +30,7 @@ public class Counter2 extends Actor
         {
             
             MyWorld myworld = (MyWorld)getWorld();
-            myworld.doGameOver();
+            //myworld.doGameOver();
             
         }
     }

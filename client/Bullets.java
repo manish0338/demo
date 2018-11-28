@@ -24,20 +24,9 @@ public class Bullets extends Actor
     }
     public void hitDetection()
     {
-        Actor b = getOneIntersectingObject(Player2.class);
+     
          
-       if(b != null)
-        {
-            Explosion exp=new Explosion();
-            getWorld().addObject(exp, getX(), getY());
-            exp.act();
-            MyWorld myworld = (MyWorld)getWorld();
-            Counter2 counter = myworld.getCounter2();
-            counter.reduceHealth();
-            getWorld().removeObject(this);
-        }
-        
-       else if(getX() >= getWorld().getWidth() - 1)   
+       if(getX() >= getWorld().getWidth() - 1)   
        {
             Explosion exp=new Explosion();
             getWorld().addObject(exp, getX(), getY());

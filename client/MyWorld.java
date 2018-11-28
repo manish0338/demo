@@ -10,8 +10,10 @@ public class MyWorld extends World
 {
     GreenfootSound sound = new GreenfootSound("Marimba Boy.wav");
     public static MyWorld mw;
-    Counter counter = new Counter();
-    Counter2 counter2 = new Counter2();
+    Player1 player1 = new Player1();
+    Player2 player2 = new Player2();
+    Counter counter = new Counter(player1);
+    Counter2 counter2 = new Counter2(player2);
     public static WorldState current;
     private WorldState prev;    
     private WorldState onGoing;
@@ -99,8 +101,15 @@ public class MyWorld extends World
     private void prepareWaiting()
     {
         Waiting waiting = new Waiting();
-        Player1 player1 = new Player1();
+        //Player1 player1 = new Player1();
         addObject(player1,100,300);
+        
+        //For Testing
+        //addObject(counter, 200, 40);
+        //addObject(counter2, 500, 40);
+        //addObject(player2,700,300);
+        
+        
         this.addObject(waiting, 400, 300);
     }
     
@@ -114,9 +123,9 @@ public class MyWorld extends World
         removeObjects(getObjects(null));
         addObject(counter, 200, 40);
         addObject(counter2, 500, 40);
-        Player1 player1 = new Player1();
+        //Player1 player1 = new Player1();
         addObject(player1,100,300);
-        Player2 player2 = new Player2();
+        //Player2 player2 = new Player2();
         addObject(player2,700,300);
     }
     public void BackMusic(){
