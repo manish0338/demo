@@ -28,9 +28,9 @@ public class Bullet2 extends Actor
     {
         if(getX() < 1)   
        {
-            Explosion exp=new Explosion();
+            Explosions exp=new Explosions();
             getWorld().addObject(exp, getX(), getY());
-            exp.act();
+             exp.showExplosion();
             getWorld().removeObject(this);  
         }
     }

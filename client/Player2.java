@@ -132,9 +132,9 @@ public class Player2 extends Actor
         
         if(p2 != null)
         {
-            Explosion exp=new Explosion();
+           Explosions exp=new Explosions();
             getWorld().addObject(exp, getX(), getY());
-            exp.act();
+             exp.showExplosion();
             MyWorld myworld = (MyWorld)getWorld();
             //Counter2 counter = myworld.getCounter2();
             notifyAllObservers();
