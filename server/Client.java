@@ -42,10 +42,11 @@ public class Client {
 
          byte[] buf1 = bStream1.toByteArray();
          DatagramPacket packet1 = new DatagramPacket(buf1, buf1.length, address, 5000);
-         socket.send(packet1);
+         
          
          while(true) {
-         
+        	 try {
+        	 socket.send(packet1);
         	 socket.send(packet1);
 
 			socket.setSoTimeout(200);
@@ -55,6 +56,7 @@ public class Client {
 			iStream.close();
 		
 			System.out.println(o1);
+        	 }catch(Exception e){}
          }
         }catch(Exception e){e.printStackTrace();}
 
