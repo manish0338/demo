@@ -7,12 +7,11 @@ import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceiveUDP extends Thread {
+public class ServerUDP extends Thread {
 
 	private DatagramSocket socket;
 	private DatagramSocket socket1;
@@ -20,7 +19,7 @@ public class ReceiveUDP extends Thread {
 	List<SocketAddress> soAddressList = new ArrayList<SocketAddress>();
 	List<InetAddress> ipList = new ArrayList<InetAddress>();
 
-	public ReceiveUDP() throws Exception {
+	public ServerUDP() throws Exception {
 		socket = new DatagramSocket(5000);
 		socket1 = new DatagramSocket();
 	}
@@ -108,7 +107,7 @@ public class ReceiveUDP extends Thread {
 	}
 
 	public static void main(String args[]) throws Exception {
-		Thread t1 = new ReceiveUDP();
+		Thread t1 = new ServerUDP();
 		t1.start();
 	}
 }
