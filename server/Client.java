@@ -15,7 +15,7 @@ public class Client {
     static
     {
         try{
-           socket = new DatagramSocket();
+           socket = new DatagramSocket(5000);
            address = InetAddress.getByName("52.53.161.113");
         }catch(Exception e){e.printStackTrace();}
     }
@@ -29,19 +29,33 @@ public class Client {
          ObjectOutput oo = new ObjectOutputStream(bStream);
          oo.writeObject(o);
          oo.close();
-
+         
          byte[] buf = bStream.toByteArray();
          DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 5000);
          socket.send(packet);
          
-         //DatagramPacket packet = new DatagramPacket(serializedMessage, serializedMessage.length);
-			socket.receive(packet);
+
+    	 ByteArrayOutputStream bStream1 = new ByteArrayOutputStream();
+         ObjectOutput oo1 = new ObjectOutputStream(bStream1);
+         oo1.writeObject(new XY());
+         oo1.close();
+
+         byte[] buf1 = bStream1.toByteArray();
+         DatagramPacket packet1 = new DatagramPacket(buf1, buf1.length, address, 5000);
+         socket.send(packet1);
+         
+         while(true) {
+         
+        	 socket.send(packet1);
+
+			socket.setSoTimeout(200);
+        	 socket.receive(packet1);
 			ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
 			Object o1 = iStream.readObject();
 			iStream.close();
 		
 			System.out.println(o1);
-        
+         }
         }catch(Exception e){e.printStackTrace();}
 
     }
