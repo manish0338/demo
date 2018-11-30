@@ -30,7 +30,7 @@ public class Counter2 extends Actor
         {
             
             MyWorld myworld = (MyWorld)getWorld();
-            //myworld.doGameOver();
+            myworld.doGameOver();
             
         }
     }
