@@ -13,6 +13,7 @@ public class Explosions  extends Actor
     private int life=30;
 private GreenfootImage[] explosions;
 private int ExplosionType;
+GreenfootSound sound = new GreenfootSound("Explo Classic.wav");
 
     /**
      * Constructor for objects of class Explosions
@@ -56,9 +57,10 @@ public void showExplosion()
     }
   
 }
-else
+else{
+sound.play();
   getWorld().removeObject(this);
-
+}
 
 
  
