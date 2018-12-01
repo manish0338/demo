@@ -120,4 +120,3 @@ Team Member Name:
 Sojan Mathew  
 What I did since my last daily scrum: Implemented the iterator pattern  
 What I plan to do today: Draw use case diagram . 
-
