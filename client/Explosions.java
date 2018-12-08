@@ -35,13 +35,13 @@ public void showExplosion()
 {
     ImageRepository imageRepo= new ImageRepositoryImpl();
     ImageIterator iter =  imageRepo.createIterator();
-  System.out.println("outside Iterator"+iter.isDone());
+  //System.out.println("outside Iterator"+iter.isDone());
 
  if(life >0)
  {   while(!iter.isDone())
     { life--;
        
-        System.out.println("inside  Iterator"+iter.currentImage());
+       // System.out.println("inside  Iterator"+iter.currentImage());
       
          GreenfootImage myImage;
        myImage = iter.currentImage();
@@ -50,7 +50,7 @@ public void showExplosion()
         this.setImage(myImage);
       
     
-        System.out.println("Life"+life);
+        //System.out.println("Life"+life);
         iter.next();
        
         
